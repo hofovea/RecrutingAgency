@@ -9,10 +9,10 @@ namespace DAL.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public virtual ICollection<EmployerRequirement> EmployerRequirements { get; set; }
+        public virtual ICollection<UserToRequirement> UserRequirements { get; set; }
         public Requirement()
         {
-            EmployerRequirements = new List<EmployerRequirement>();
+            UserRequirements = new List<UserToRequirement>();
         }
     }
 }

@@ -9,10 +9,10 @@ namespace DAL.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public virtual ICollection<EmploeeSkill> EmploeeSkills { get; set; }
+        public virtual ICollection<UserToSkill> UserSkills { get; set; }
         public Skill()
         {
-            EmploeeSkills = new List<EmploeeSkill>();
+            UserSkills = new List<UserToSkill>();
         }
     }
 }

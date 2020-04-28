@@ -11,11 +11,20 @@ namespace DAL.Configurations
     {
         public void Configure(EntityTypeBuilder<Skill> builder)
         {
-            builder.Property(p => p.Name)
+            builder
+                .Property(p => p.Name)
                 .IsRequired()
                 .HasMaxLength(64);
-            builder.Property(p => p.Description)
+            builder
+                .Property(p => p.Description)
                 .HasMaxLength(512);
+
+            //Skill with UserToSkill
+            builder
+                .HasMany(skill => skill.UserSkills)
+                .WithOne(userToSkill => userToSkill.Skill)
+                .HasForeignKey(userToSkill => userToSkill.SkillId)
+                .IsRequired();
         }
     }
 }

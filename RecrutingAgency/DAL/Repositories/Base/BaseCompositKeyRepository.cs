@@ -30,9 +30,9 @@ namespace DAL.Repositories.Base
             return await Context.Set<T>().ToListAsync();
         }
 
-        public async Task<T> Get(TFirstId emploeeId, int skillId)
+        public async Task<T> Get(TFirstId firstId, TSecondId secondId)
         {
-            return await Context.Set<T>().FindAsync(emploeeId, skillId);
+            return await Context.Set<T>().FindAsync(firstId, secondId);
         }
 
         public async void Insert(T item)

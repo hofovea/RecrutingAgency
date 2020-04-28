@@ -8,11 +8,20 @@ namespace DAL.Configurations
     {
         public void Configure(EntityTypeBuilder<Requirement> builder)
         {
-            builder.Property(p => p.Name)
+            builder
+                .Property(p => p.Name)
                 .IsRequired()
                 .HasMaxLength(50);
-            builder.Property(p => p.Description)
+            builder
+                .Property(p => p.Description)
                 .HasMaxLength(500);
+
+            //Requirement with UserToRequirement
+            builder
+                .HasMany(requirement => requirement.UserRequirements)
+                .WithOne(employerRequirement => employerRequirement.Requirement)
+                .HasForeignKey(employerRequirement => employerRequirement.RequirementId)
+                .IsRequired();
         }
     }
 }

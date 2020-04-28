@@ -1,4 +1,5 @@
 ﻿using System;
+using DAL.Identity;
 
 namespace DAL.Entities
 {
@@ -10,7 +11,7 @@ namespace DAL.Entities
         public DateTime EntryDate { get; set; }
         public DateTime? CloseDate { get; set; }
         public string Description { get; set; }
-        public string EmploeeId { get; set; }
-        public virtual Emploee Emploee { get; set; }
+        public string UserId { get; set; }
+        public virtual User User { get; set; }
     }
 }

@@ -12,9 +12,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories
 {
-    public class EmploeeSkillRepository : BaseCompositKeyRepository<EmploeeSkill, string, int>
+    public class UserToSkillRepository : BaseCompositKeyRepository<UserToSkill, string, int>
     {
-        public EmploeeSkillRepository(Context context) : base(context)
+        public UserToSkillRepository(Context context) : base(context)
        {
        }
     }

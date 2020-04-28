@@ -11,18 +11,23 @@ namespace DAL.Configurations
     {
         public void Configure(EntityTypeBuilder<WorkExperience> builder)
         {
-            builder.Property(x => x.Company)
+            builder
+                .Property(x => x.Company)
                 .IsRequired()
                 .HasMaxLength(64);
-            builder.Property(x => x.Position)
+            builder
+                .Property(x => x.Position)
                 .IsRequired()
                 .HasMaxLength(64);
-            builder.Property(x => x.Description)
+            builder
+                .Property(x => x.Description)
                 .IsRequired()
                 .HasMaxLength(1024);
-            builder.Property(x => x.EntryDate)
+            builder
+                .Property(x => x.EntryDate)
                 .HasColumnType("date");
-            builder.Property(x => x.CloseDate)
+            builder
+                .Property(x => x.CloseDate)
                 .HasColumnType("date");
         }
     }

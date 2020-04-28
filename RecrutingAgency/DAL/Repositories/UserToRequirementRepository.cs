@@ -7,9 +7,9 @@ using DAL.Repositories.Base;
 
 namespace DAL.Repositories
 {
-    public class EmployerRequirementRepository : BaseCompositKeyRepository<EmployerRequirement, string, int>
+    public class UserToRequirementRepository : BaseCompositKeyRepository<UserToRequirement, string, int>
     {
-        public EmployerRequirementRepository(Context context) : base(context)
+        public UserToRequirementRepository(Context context) : base(context)
         {
         }
     }

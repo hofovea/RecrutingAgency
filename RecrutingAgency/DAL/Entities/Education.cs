@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using DAL.Identity;
 
 namespace DAL.Entities
 {
@@ -11,7 +12,7 @@ namespace DAL.Entities
         public string NameInstitution { get; set; }
         public DateTime EntryDate { get; set; }
         public DateTime? CloseDate { get; set; }
-        public string EmploeeId { get; set; }
-        public virtual Emploee EmploeeProfile { get; set; }
+        public string UserId { get; set; }
+        public virtual User User { get; set; }
     }
 }

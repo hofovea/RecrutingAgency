@@ -8,19 +8,15 @@ using DAL.Interfaces.Repositories;
 
 namespace DAL.Interfaces
 {
-    interface IUnitOfWork
+    interface IUnitOfWork : IDisposable
     {
-        IRepository<Emploee, string> Emploees { get; }
-        IRepository<Employer, string> Employers { get; }
+        IRepository<User, string> Users { get; }
         IRepository<Project, int> Projects { get; }
         IRepository<Requirement, int> Requirements { get; }
         IRepository<Skill, int> Skills { get; }
         IRepository<WorkExperience, int> WorkExperiences { get; }
-        IEmploeeSkillRepository EmploeeSkills { get; }
-        IEmployerRequirementRepository EmployerRequirement { get; }
-        AppEmploeeManager AppEmploeeManager { get; }
-        AppRoleManager AppRoleManager { get; }
-        AppEmployerManager AppEmployerManager { get; }
-        Task SaveAsync();
+        ICompositKeyRepository<UserToSkill, string, int> UserSkills { get; }
+        ICompositKeyRepository<UserToRequirement, string, int> UserRequirement { get; }
+        Task<int> SaveAsync();
     }
 }

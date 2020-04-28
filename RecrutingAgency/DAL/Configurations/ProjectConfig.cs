@@ -11,15 +11,18 @@ namespace DAL.Configurations
     {
         public void Configure(EntityTypeBuilder<Project> builder)
         {
-            builder.Property(p => p.Name)
+            builder
+                .Property(p => p.Name)
                 .IsRequired()
                 .HasMaxLength(50);
-            builder.Property(p => p.DescriptionOfTasks)
+            builder
+                .Property(p => p.DescriptionOfTasks)
                 .IsRequired()
                 .HasMaxLength(100);
-            builder.Property(p => p.LinkToTheProject)
+            builder
+                .Property(p => p.LinkToTheProject)
                 .IsRequired()
-                .HasMaxLength(1000);
+                .HasMaxLength(100);
         }
     }
 }
