@@ -6,8 +6,8 @@
 
   <ItemGroup>
     <Folder Include="DTO\" />
-    <Folder Include="Infrastructure\" />
     <Folder Include="Interfaces\" />
+    <Folder Include="Identity\" />
     <Folder Include="Services\" />
   </ItemGroup>
 

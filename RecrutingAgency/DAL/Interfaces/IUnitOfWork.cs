@@ -11,12 +11,7 @@ namespace DAL.Interfaces
     interface IUnitOfWork : IDisposable
     {
         IRepository<User, string> Users { get; }
-        IRepository<Project, int> Projects { get; }
-        IRepository<Requirement, int> Requirements { get; }
-        IRepository<Skill, int> Skills { get; }
-        IRepository<WorkExperience, int> WorkExperiences { get; }
-        ICompositKeyRepository<UserToSkill, string, int> UserSkills { get; }
-        ICompositKeyRepository<UserToRequirement, string, int> UserRequirement { get; }
+        IRepository<JobPosting, int> JobPostings { get; }
         Task<int> SaveAsync();
     }
 }

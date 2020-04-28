@@ -7,22 +7,21 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DAL.Configurations
 {
-    class ProjectConfig : IEntityTypeConfiguration<Project>
+    class JobPosingConfig : IEntityTypeConfiguration<JobPosting>
     {
-        public void Configure(EntityTypeBuilder<Project> builder)
+        public void Configure(EntityTypeBuilder<JobPosting> builder)
         {
             builder
-                .Property(p => p.Name)
+                .Property(x => x.Name)
                 .IsRequired()
-                .HasMaxLength(50);
+                .HasMaxLength(25);
             builder
-                .Property(p => p.DescriptionOfTasks)
+                .Property(x => x.Description)
                 .IsRequired()
                 .HasMaxLength(100);
             builder
-                .Property(p => p.LinkToTheProject)
-                .IsRequired()
-                .HasMaxLength(100);
+                .Property(x => x.Payment)
+                .IsRequired();
         }
     }
 }

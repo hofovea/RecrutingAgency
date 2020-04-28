@@ -12,28 +12,22 @@ namespace DAL.Configurations
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder
-                .Property(profile => profile.FullName)
+                .Property(user => user.FullName)
                 .IsRequired()
                 .HasMaxLength(50);
             builder
-                .Property(profile => profile.Email)
+                .Property(user => user.Email)
                 .IsRequired()
                 .HasMaxLength(50);
             builder
-                .Property(profile => profile.Age)
+                .Property(user => user.Age)
                 .IsRequired();
             builder
-                .Property(profile => profile.GitHub)
+                .Property(user => user.GitHub)
                 .IsRequired()
                 .HasMaxLength(50);
             builder
-                .Property(profile => profile.Phone)
-                .HasMaxLength(50);
-            builder
-                .Property(profile => profile.ImageProfileUrl)
-                .HasMaxLength(50);
-            builder
-                .Property(profile => profile.Address)
+                .Property(user => user.PhoneNumber)
                 .HasMaxLength(50);
 
             //User with UserToRole
@@ -42,35 +36,11 @@ namespace DAL.Configurations
                 .WithOne(userToRole => userToRole.User)
                 .HasForeignKey(userToRole => userToRole.UserId)
                 .IsRequired();
-            //User with Education
+            //User with JobPosting
             builder
-                .HasMany(user => user.Educations)
-                .WithOne(education => education.User)
-                .HasForeignKey(education => education.UserId)
-                .IsRequired();
-            //User with UserToSkill
-            builder
-                .HasMany(user => user.UserSkills)
-                .WithOne(userSkill => userSkill.User)
-                .HasForeignKey(userSkill => userSkill.UserId)
-                .IsRequired();
-            //User with UserToRequirement
-            builder
-                .HasMany(user => user.UserRequirements)
-                .WithOne(userRequirement => userRequirement.User)
-                .HasForeignKey(employerRequirement => employerRequirement.UserId)
-                .IsRequired();
-            //User with Project
-            builder
-                .HasMany(user => user.Projects)
-                .WithOne(project => project.User)
-                .HasForeignKey(project => project.UserId)
-                .IsRequired();
-            //User with WorkExperience
-            builder
-                .HasMany(user => user.WorkExperiences)
-                .WithOne(workExperience => workExperience.User)
-                .HasForeignKey(workExperience => workExperience.UserId)
+                .HasMany(user => user.JobPostings)
+                .WithOne(job => job.Employer)
+                .HasForeignKey(job => job.EmployerId)
                 .IsRequired();
         }
     }
