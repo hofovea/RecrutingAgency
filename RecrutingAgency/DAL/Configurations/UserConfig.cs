@@ -42,6 +42,11 @@ namespace DAL.Configurations
                 .WithOne(job => job.Employer)
                 .HasForeignKey(job => job.EmployerId)
                 .IsRequired();
+            //User with User
+            builder
+                .HasMany(user => user.Recruits)
+                .WithOne(recruit => recruit.Employer)
+                .HasForeignKey(recruit => recruit.EmployerId);
         }
     }
 }
