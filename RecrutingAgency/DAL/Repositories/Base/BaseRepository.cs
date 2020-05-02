@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using DAL.EF;
@@ -20,24 +21,22 @@ namespace DAL.Repositories.Base
             Context = context;
         }
 
-        public async void Delete(TId id)
-        {
-            var entity = await Context.Set<T>().FindAsync(id);
-            if (entity != null)
-                Context.Set<T>().Remove(entity);
-        }
-
-        public async Task<T> Get(TId id)
+        public async Task<T> GetByIdAsync(TId id)
         {
             return await Context.Set<T>().FindAsync(id);
         }
 
-        public async Task<IEnumerable<T>> GetAll()
+        public async Task<T> SingleOrDefaultAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await Context.Set<T>().SingleOrDefaultAsync(predicate);
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
             return await Context.Set<T>().ToListAsync();
         }
 
-        public async void Insert(T entity)
+        public async void AddAsync(T entity)
         {
             await Context.Set<T>().AddAsync(entity);
         }
@@ -50,6 +49,13 @@ namespace DAL.Repositories.Base
                 Context.Entry(localEntity).State = EntityState.Detached;
             }
             Context.Entry(entity).State = EntityState.Modified;
+        }
+
+        public async void Delete(TId id)
+        {
+            var entity = await Context.Set<T>().FindAsync(id);
+            if (entity != null)
+                Context.Set<T>().Remove(entity);
         }
     }
 }
