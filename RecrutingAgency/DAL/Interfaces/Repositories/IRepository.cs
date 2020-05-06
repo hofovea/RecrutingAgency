@@ -10,8 +10,8 @@ namespace DAL.Interfaces.Repositories
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> GetByIdAsync(TId id);
         Task<T> SingleOrDefaultAsync(Expression<Func<T, bool>> predicate);
-        void AddAsync(T item);
-        void Update(T item, TId id);
-        void Delete(TId id);
+        Task AddAsync(T item);
+        Task Update(T item, TId id);
+        Task Delete(TId id);
     }
 }

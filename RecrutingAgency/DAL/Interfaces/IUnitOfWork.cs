@@ -8,7 +8,7 @@ using DAL.Interfaces.Repositories;
 
 namespace DAL.Interfaces
 {
-    interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IDisposable
     {
         IRepository<User, string> Users { get; }
         IRepository<JobPosting, int> JobPostings { get; }

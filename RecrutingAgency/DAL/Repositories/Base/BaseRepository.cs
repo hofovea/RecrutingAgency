@@ -36,12 +36,12 @@ namespace DAL.Repositories.Base
             return await Context.Set<T>().ToListAsync();
         }
 
-        public async void AddAsync(T entity)
+        public async Task AddAsync(T entity)
         {
             await Context.Set<T>().AddAsync(entity);
         }
 
-        public async void Update(T entity, TId id)
+        public async Task Update(T entity, TId id)
         {
             var localEntity = await Context.Set<T>().FindAsync(id);
             if (localEntity != null)
@@ -51,7 +51,7 @@ namespace DAL.Repositories.Base
             Context.Entry(entity).State = EntityState.Modified;
         }
 
-        public async void Delete(TId id)
+        public async Task Delete(TId id)
         {
             var entity = await Context.Set<T>().FindAsync(id);
             if (entity != null)
