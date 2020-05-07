@@ -43,24 +43,24 @@ namespace BLL.Services
             return _mapper.Map<JobPosting, JobPostingDto>(jobPosting);
         }
 
-        public async Task<JobPostingDto> Add(CreateUpdateJobPosingDto jobPostingDto)
+        public async Task<JobPostingDto> Add(CreateJobPostingDto jobPostingDto)
         {
-            var validator = new CreateUpdateJobPostingDtoValidation();
+            var validator = new CreateJobPostingDtoValidation();
             var validationResult = await validator.ValidateAsync(jobPostingDto);
             if (!validationResult.IsValid)
             {
                 throw new ValidationException(validationResult.Errors);
             }
 
-            var jobPostingToAdd = _mapper.Map<CreateUpdateJobPosingDto, JobPosting>(jobPostingDto);
+            var jobPostingToAdd = _mapper.Map<CreateJobPostingDto, JobPosting>(jobPostingDto);
             await _unitOfWork.JobPostings.AddAsync(jobPostingToAdd);
             await _unitOfWork.SaveAsync();
             return _mapper.Map<JobPosting, JobPostingDto>(jobPostingToAdd);
         }
 
-        public async Task Update(int id, CreateUpdateJobPosingDto newJobPosting)
+        public async Task Update(int id, UpdateJobPostingDto newJobPosting)
         {
-            var validator = new CreateUpdateJobPostingDtoValidation();
+            var validator = new UpdateJobPostingDtoValidation();
             var validationResult = await validator.ValidateAsync(newJobPosting);
             if (!validationResult.IsValid)
             {
@@ -73,7 +73,7 @@ namespace BLL.Services
                 throw ExceptionBuilder.Create("JobPosing with such Id does not exist");
             }
 
-            var jobPosting = _mapper.Map<CreateUpdateJobPosingDto, JobPosting>(newJobPosting);
+            var jobPosting = _mapper.Map<UpdateJobPostingDto, JobPosting>(newJobPosting);
             await _unitOfWork.JobPostings.Update(jobPosting, id);
             await _unitOfWork.SaveAsync();
         }

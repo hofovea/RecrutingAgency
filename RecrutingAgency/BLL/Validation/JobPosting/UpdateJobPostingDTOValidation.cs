@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using BLL.DTO.JobPosting;
+﻿using BLL.DTO.JobPosting;
 using FluentValidation;
 
 namespace BLL.Validation.JobPosting
 {
-    class CreateUpdateJobPostingDtoValidation : AbstractValidator<CreateUpdateJobPosingDto>
+    class UpdateJobPostingDtoValidation : AbstractValidator<UpdateJobPostingDto>
     {
-        public CreateUpdateJobPostingDtoValidation()
+        public UpdateJobPostingDtoValidation()
         {
             RuleFor(jobPosting => jobPosting.Description).NotEmpty().Length(10, 100);
             RuleFor(jobPosting => jobPosting.Payment).NotEmpty();

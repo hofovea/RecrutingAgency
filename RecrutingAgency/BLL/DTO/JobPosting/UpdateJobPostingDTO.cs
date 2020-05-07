@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BLL.DTO.JobPosting
 {
-    public class CreateUpdateJobPosingDto
+    public class UpdateJobPostingDto
     {
         public string Name { get; set; }
         public string Description { get; set; }

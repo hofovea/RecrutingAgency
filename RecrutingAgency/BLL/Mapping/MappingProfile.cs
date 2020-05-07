@@ -24,7 +24,8 @@ namespace BLL.Mapping
 
             CreateMap<JobPosting, JobPostingDto>()
                 .ReverseMap();
-            CreateMap<CreateUpdateJobPosingDto, JobPosting>();
+            CreateMap<CreateJobPostingDto, JobPosting>();
+            CreateMap<UpdateJobPostingDto, JobPosting>();
         }
     }
 }

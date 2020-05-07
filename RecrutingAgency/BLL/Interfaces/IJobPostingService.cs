@@ -12,8 +12,8 @@ namespace BLL.Interfaces
     {
         Task<IEnumerable<JobPostingDto>> GetAll();
         Task<JobPostingDto> GetById(int id);
-        Task<JobPostingDto> Add(CreateUpdateJobPosingDto jobPostingDto);
-        Task Update(int id, CreateUpdateJobPosingDto newJobPostingDto);
+        Task<JobPostingDto> Add(CreateJobPostingDto jobPostingDto);
+        Task Update(int id, UpdateJobPostingDto newJobPostingDto);
         Task Delete(int id);
     }
 }
