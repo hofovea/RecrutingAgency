@@ -8,7 +8,7 @@ using BLL.DTO.JobPosting;
 
 namespace BLL.Interfaces
 {
-    interface IJobPostingService
+    public interface IJobPostingService
     {
         Task<IEnumerable<JobPostingDto>> GetAll();
         Task<JobPostingDto> GetById(int id);
