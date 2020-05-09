@@ -74,7 +74,6 @@ namespace RecruitingAgency.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status404NotFound)]
-        [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status403Forbidden)]
         public async Task<ActionResult> Post(int id, [FromBody] UpdateJobPostingDto postBody)
         {
             if (!(await _authorizationService.AuthorizeAsync(User, id, "EditJob")).Succeeded)
@@ -93,7 +92,6 @@ namespace RecruitingAgency.Controllers
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status404NotFound)]
-        [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status403Forbidden)]
         public async Task<ActionResult> Delete(int id)
         {
             var job = await _jobPostingService.GetById(id);
