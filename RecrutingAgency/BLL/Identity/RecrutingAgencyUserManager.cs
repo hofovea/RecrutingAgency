@@ -8,7 +8,7 @@ using Microsoft.Extensions.Options;
 
 namespace BLL.Identity
 {
-    class RecrutingAgencyUserManager : UserManager<User>
+    public class RecrutingAgencyUserManager : UserManager<User>
     {
         public RecrutingAgencyUserManager(IUserStore<User> store, IOptions<IdentityOptions> optionsAccessor,
             IPasswordHasher<User> passwordHasher, IEnumerable<IUserValidator<User>> userValidators,
